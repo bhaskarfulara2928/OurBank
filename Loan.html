@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            label{
+                font-size: 20px;
+                font-weight: 900;
+            }
+        </style>
+        <script>
+            function loadROI(){
+                var num=document.getElementById('loanType').value;
+                if(num=='Home Loan'){
+                    document.getElementById('ROI').value=7;
+                }
+                else if(num=='Car Loan'){
+                    document.getElementById('ROI').value=8.5;
+                }
+                else{
+                    document.getElementById('ROI').value=10;
+                }
+            }
+            function calculateEmi(amt,years){
+                var roi=document.getElementById('ROI').value;
+                var val=roi/100;
+                var interest=val*amt;
+                var duration=12*years;
+                var total=(interest+amt)/duration;
+                document.getElementById('EMI').value=total;
+            }
+        </script>
+    </head>
+    <body>
+        <nav><center><h2> Our Bank</h2></center></nav>
+        <header style="top:20px; position:fixed;">
+            <a href="./index.html"><img src="./logo.jpg" height="50px"
+                    width="50px"></a>
+            <span>
+                <a href="./index.html" style="padding:10px">HOME</a>
+                <a href="./aboutus.html" style="padding:10px">ABOUTUS</a>
+                <a href="./service.html" style="padding:10px">SERVICES</a>
+                <a href="./netbanking.html" style="padding:10px">NETBANKING</a>
+                <a href="./contactus.html" style="padding:10px">CONTACTUS</a>
+            </span>
+           
+        </header>
+        <span >
+            <form name="loanForm" style="padding:165px; padding-left: 329px;">
+                <label> Applicant Name: </label><input type="text" name="name" placeholder="Enter your name."><br>
+                <label>Loan Type:</label>
+                <select name="loanType" id="loanType" onchange="loadROI()">
+                    <option >Home Loan</option>
+                    <option >Car Loan</option>
+                    <option >Personal Loan</option>
+                </select><br>
+                <label>Amount:</label>
+                <input type="number" name="amount" placeholder="eg.. 200000"><br>
+                <label>Rate Of Interest:</label>
+                <input type="number" name="ROI" id="ROI" placeholder="7" disabled><br>
+                <label>Duration of years:</label>
+                <input type="number" name="years" placeholder="max 20 years" onchange="calculateEmi(amount.value,years.value)"><br>
+                <label>EMI:</label>
+                <input type="number" name="EMI" id="EMI" disabled><br>
+                <br>
+                <!-- <input type="button" value="Calculate" onclick=""> -->
+            </form>
+        </span>
+
+        <footer style="bottom:0; position: fixed;">
+            <h2> © 2022 Copyright: Netbanking.com</h2>
+        </footer>
+    </body>
+</html>

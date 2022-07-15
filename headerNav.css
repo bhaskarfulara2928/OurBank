@@ -1,0 +1,20 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+
+
+.navbarLink{
+    display: inline-block;
+
+}
+
+a{
+    text-decoration: none;
+    
+}
+
+.navbarLink a{
+    padding: 10px;
+
+}
